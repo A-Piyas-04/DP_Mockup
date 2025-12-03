@@ -1,0 +1,148 @@
+
+Below is a clean, structured, mobile-focused list of all essential frontend pages for your IUT Transport System webapp — based on your problem brief (subscriptions, daily tokens, seat availability, payments, drivers, transport officer).
+Everything is written so you can directly give this to your UI agent to generate screens.
+✅ Frontend Pages (Mobile-First) — Full List + Design Details
+1. Login Page
+Purpose: Authentication for Transport Officer, Driver, Subscriber, General User
+Design Details:
+Clean 1-column layout
+University logo at top, short tagline
+Inputs: Email, Password
+Buttons: Login, Forgot Password
+Role auto-detected from backend, not selected manually
+Minimal fields + strong error messages
+2. Dashboard (Role-Based Landing Page)
+a) Transport Officer Dashboard
+KPI cards: total vehicles, today’s bookings, available seats, pending payments
+Quick Actions: “Add Vehicle”, “Assign Driver”, “View Today’s Trips”
+Scrollable list for active trips with seat usage bars
+Notification bell for driver updates/issues
+b) Subscriber Dashboard
+Show their subscription: route, seat number, validity
+“Mark Absent for a Day” button
+Daily seat calendar showing availability
+CTA: “Book Extra Token” if needed
+c) User (Non-Subscriber) Dashboard
+Search route → show today’s seat availability
+Token purchase button
+Previously purchased tokens history
+d) Driver Dashboard
+Show assigned vehicle (plate no., type)
+Today’s trip: route, pickup time, passenger list
+Button: “Start Trip / End Trip”
+Incident report button
+3. Vehicle Management Pages (Transport Officer only)
+a) Vehicles List
+Card list: vehicle image, type (microbus/coster), plate number
+Status tag: Active / Under Maintenance
+CTA: “Assign Driver”
+Search bar + small filters (type)
+b) Vehicle Details Page
+Header card: Plate number, seats, route
+Driver section (photo + contact)
+Seat map (simple visual grid)
+Trips history (scrollable)
+Button: Edit Vehicle
+4. Driver Management Pages
+a) Driver List
+List of drivers with photo, name, phone
+Tag: Assigned / Unassigned
+Side action: Assign to Vehicle
+b) Driver Profile
+Driver info
+Assigned Vehicle
+Assigned Routes
+Ratings (optional upgrade)
+5. Route & Trip Management
+a) Route List
+List of official transport routes
+Each card: start–end, total seats, schedule
+CTA: View Details
+b) Route Details / Trip Overview
+Seat availability
+Passenger list (names + roles)
+Subscription occupancy vs daily tokens
+Buttons: Manage Seats, Export List (optional)
+6. Seat Booking Pages
+a) Seat Availability (for users & subscribers)
+Date selector
+Seat map (minimalistic → boxes representing seats)
+Colors: 
+Green = available
+Yellow = reserved
+Red = full
+CTA: “Book Token”
+Fare shown at bottom
+b) Subscription Seat Management (For Officer)
+List of subscribers per route
+Toggle buttons for marking absence (auto-free seat)
+Option: Assign seat permanently
+7. Token Booking & Payment
+a) Token Booking Page
+Selected route
+Available seats
+Fare
+Pickup location dropdown
+Time slot
+CTA: Proceed to Payment
+b) Payment Page
+Mobile-friendly summary
+Options: Manual confirmation (for now)
+Payment status UI (Pending / Confirmed)
+c) Payment History
+Table-like cards
+Filter: Today / Month / Route
+Badge: Paid / Pending / Cancelled
+8. Subscription Management Pages
+a) Subscription List (Officer)
+Cards: subscriber name, route, seat
+Status: Active / Suspended
+CTA: Edit Subscription
+b) Subscriber Profile
+Subscription validity
+Payment summary
+Absence marking feature
+9. Reports & Analytics (For Officer)
+a) Daily Summary Report
+Total riders today
+Available seats today
+Revenue today
+List of absent subscribers
+b) Monthly Report
+Graphs (simple mobile charts)
+Export PDF button
+10. Notification Center
+Real-time seat booking updates
+Payment confirmations
+Driver trip messages
+Clear All button
+11. Profile & Settings
+User info
+Change password
+
+
+Logout
+Dark mode toggle (optional)
+🎨 General Mobile Design Principles for All Screens
+Single-column layout with stacked components
+Sticky bottom actions (like “Book Now”, “Save”)
+Minimal text, use icons for vehicle, driver, routes
+Total height < one screen for primary actions
+Smooth cards for lists
+Consistent spacing, 12–16px gaps
+Primary color: university theme (dark green / navy, whichever IUT uses)
+Secondary color: light grey backgrounds
+Rounded corners: 12–16px
+Buttons: full-width on mobile
+Seat map: simplified boxes, not detailed graphics
+Charts: lightweight, vertical-bar or line charts only
+📌 One-Scroll Summary (Copy-Paste for Agent)
+Mobile-first screens required:
+Login → Role-based Dashboards (Officer, Driver, Subscriber, User) → Vehicle List + Vehicle Details → Driver List + Profile → Route List + Route Details → Seat Availability → Token Booking → Payment → Payment History → Subscription List + Subscriber Profile → Reports (Daily & Monthly) → Notification Center → Profile & Settings.
+Use single-column, card-based UI, rounded corners, consistent spacing, sticky bottom CTAs, simple seat map, color-coded statuses, minimal text, and responsive design.
+If you want, I can also provide:
+✅ Full user flows (step-by-step interactions)
+✅ Wireframes for each page
+✅ A complete tech architecture (frontend + backend + DB)
+✅ API route mapping based on these pages
+Just tell me!

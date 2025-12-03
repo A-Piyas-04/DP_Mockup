@@ -8,6 +8,8 @@ import VehicleList from './pages/vehicles/VehicleList';
 import VehicleDetails from './pages/vehicles/VehicleDetails';
 import DriverList from './pages/drivers/DriverList';
 import DriverProfile from './pages/drivers/DriverProfile';
+import RouteList from './pages/routes/RouteList';
+import RouteDetails from './pages/routes/RouteDetails';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="vehicles/:id" element={<VehicleDetails />} />
           <Route path="drivers" element={<DriverList />} />
           <Route path="drivers/:id" element={<DriverProfile />} />
+          <Route path="routes" element={<RouteList />} />
+          <Route path="routes/:id" element={<RouteDetails />} />
           <Route path="profile" element={<div>Profile Page</div>} />
           <Route path="settings" element={<div>Settings Page</div>} />
         </Route>

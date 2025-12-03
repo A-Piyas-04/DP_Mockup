@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, Ticket, History } from 'lucide-react';
 import { routes } from '../../data/mockData';
 
 const UserDashboard = () => {
+    const navigate = useNavigate();
+    const [selectedRoute, setSelectedRoute] = useState('');
+
     return (
         <div style={{ paddingBottom: '80px' }}>
             <header className="page-header">
@@ -15,8 +19,8 @@ const UserDashboard = () => {
                 <div className="input-group">
                     <label className="input-label">Select Route</label>
                     <div style={{ position: 'relative' }}>
-                        <select className="input-field" style={{ appearance: 'none' }}>
-                            <option>Select a route...</option>
+                        <select className="input-field" style={{ appearance: 'none' }} value={selectedRoute} onChange={(e) => setSelectedRoute(e.target.value)}>
+                            <option value="">Select a route...</option>
                             {routes.map(r => (
                                 <option key={r.id} value={r.id}>{r.name} ({r.start} - {r.end})</option>
                             ))}
@@ -24,7 +28,7 @@ const UserDashboard = () => {
                         <Search size={18} style={{ position: 'absolute', right: '12px', top: '14px', color: 'var(--text-secondary)' }} />
                     </div>
                 </div>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" onClick={() => navigate('/booking')}>
                     Check Availability
                 </button>
             </div>
@@ -32,7 +36,11 @@ const UserDashboard = () => {
             {/* Quick Actions */}
             <h3 style={{ marginBottom: '12px', fontSize: '1.1rem' }}>Quick Actions</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
-                <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px' }}>
+                <div
+                    className="card"
+                    style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', cursor: 'pointer' }}
+                    onClick={() => navigate('/booking/token')}
+                >
                     <div style={{ backgroundColor: '#dcfce7', padding: '8px', borderRadius: '8px', color: '#166534' }}>
                         <Ticket size={24} />
                     </div>
@@ -41,7 +49,11 @@ const UserDashboard = () => {
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>For today</div>
                     </div>
                 </div>
-                <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px' }}>
+                <div
+                    className="card"
+                    style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', cursor: 'pointer' }}
+                    onClick={() => navigate('/history')}
+                >
                     <div style={{ backgroundColor: '#f3e8ff', padding: '8px', borderRadius: '8px', color: '#6b21a8' }}>
                         <History size={24} />
                     </div>

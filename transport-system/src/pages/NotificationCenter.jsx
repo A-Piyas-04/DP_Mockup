@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Bell, CheckCircle, AlertTriangle, Info } from 'lucide-react';
+import Toast from '../components/Toast';
 
 const NotificationCenter = () => {
     const navigate = useNavigate();
+    const [showToast, setShowToast] = useState(false);
 
     const notifications = [
         { id: 1, type: 'success', title: 'Payment Confirmed', message: 'Your payment of ৳50 for Route A was successful.', time: '2 mins ago' },
@@ -28,6 +30,10 @@ const NotificationCenter = () => {
         }
     };
 
+    const handleClearAll = () => {
+        setShowToast(true);
+    };
+
     return (
         <div style={{ paddingBottom: '80px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'space-between', marginBottom: '24px' }}>
@@ -37,7 +43,7 @@ const NotificationCenter = () => {
                     </button>
                     <h1 className="page-title" style={{ fontSize: '1.25rem', marginBottom: 0 }}>Notifications</h1>
                 </div>
-                <button style={{ background: 'none', border: 'none', fontSize: '0.85rem', color: 'var(--primary-color)' }}>
+                <button onClick={handleClearAll} style={{ background: 'none', border: 'none', fontSize: '0.85rem', color: 'var(--primary-color)', cursor: 'pointer' }}>
                     Clear All
                 </button>
             </div>
@@ -64,6 +70,8 @@ const NotificationCenter = () => {
                     </div>
                 ))}
             </div>
+
+            {showToast && <Toast message="All notifications cleared!" type="success" onClose={() => setShowToast(false)} />}
         </div>
     );
 };

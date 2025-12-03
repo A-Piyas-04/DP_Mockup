@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Filter, Plus, Bus, MoreVertical } from 'lucide-react';
 import { vehicles } from '../../data/mockData';
+import Toast from '../components/Toast';
 
 const VehicleList = () => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
+    const [showToast, setShowToast] = useState(false);
+
+    const handleAddVehicle = () => {
+        setShowToast(true);
+    };
+
+    const handleFilter = () => {
+        // Mock filter action
+        alert('Filter modal would open here');
+    };
 
     return (
         <div style={{ paddingBottom: '80px' }}>
@@ -29,7 +40,7 @@ const VehicleList = () => {
                         <Search size={20} style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--text-secondary)' }} />
                     </div>
                 </div>
-                <button className="btn" style={{ width: 'auto', padding: '0 16px', backgroundColor: 'var(--white)', border: '1px solid #d1d5db' }}>
+                <button className="btn" onClick={handleFilter} style={{ width: 'auto', padding: '0 16px', backgroundColor: 'var(--white)', border: '1px solid #d1d5db' }}>
                     <Filter size={20} />
                 </button>
             </div>
@@ -70,7 +81,7 @@ const VehicleList = () => {
             </div>
 
             {/* Floating Action Button */}
-            <button className="btn btn-primary" style={{
+            <button className="btn btn-primary" onClick={handleAddVehicle} style={{
                 position: 'fixed', bottom: '90px', right: '24px',
                 width: '56px', height: '56px', borderRadius: '50%',
                 padding: 0, boxShadow: '0 4px 12px rgba(26, 71, 42, 0.4)',
@@ -78,6 +89,8 @@ const VehicleList = () => {
             }}>
                 <Plus size={24} />
             </button>
+
+            {showToast && <Toast message="Vehicle added successfully!" type="success" onClose={() => setShowToast(false)} />}
         </div>
     );
 };

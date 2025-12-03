@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CreditCard, Calendar, MapPin, AlertCircle } from 'lucide-react';
 import { routes } from '../../data/mockData';
+import Toast from '../../components/Toast';
 
 const SubscriberDashboard = () => {
+    const navigate = useNavigate();
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
     const myRoute = routes[0];
+
+    const handleMarkAbsent = () => {
+        setToastMessage('Marked absent for today');
+        setShowToast(true);
+    };
 
     return (
         <div style={{ paddingBottom: '80px' }}>
@@ -43,14 +53,14 @@ const SubscriberDashboard = () => {
                 <button className="card" style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '16px',
                     border: '1px solid #e5e7eb', cursor: 'pointer'
-                }}>
+                }} onClick={handleMarkAbsent}>
                     <AlertCircle size={24} color="#ef4444" />
                     <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Mark Absent</span>
                 </button>
                 <button className="card" style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '16px',
                     border: '1px solid #e5e7eb', cursor: 'pointer'
-                }}>
+                }} onClick={() => navigate('/booking/token')}>
                     <CreditCard size={24} color="var(--primary-color)" />
                     <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Book Extra</span>
                 </button>
@@ -76,6 +86,8 @@ const SubscriberDashboard = () => {
                     ))}
                 </div>
             </div>
+
+            {showToast && <Toast message={toastMessage} type="success" onClose={() => setShowToast(false)} />}
         </div>
     );
 };

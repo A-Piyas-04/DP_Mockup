@@ -160,3 +160,15 @@ button {
 .sticky-spacer {
   height: 80px;
 }
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}

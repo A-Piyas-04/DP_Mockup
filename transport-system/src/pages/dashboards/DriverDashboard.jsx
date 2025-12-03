@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bus, MapPin, Clock, AlertTriangle } from 'lucide-react';
 import { vehicles, routes } from '../../data/mockData';
+import Toast from '../../components/Toast';
 
 const DriverDashboard = () => {
+    const navigate = useNavigate();
+    const [showToast, setShowToast] = useState(false);
     // Mock data for the driver
     const myVehicle = vehicles[0];
     const myRoute = routes[0];
+
+    const handleStartTrip = () => {
+        setShowToast(true);
+        setTimeout(() => {
+            navigate(`/routes/${myRoute.id}`);
+        }, 1500);
+    };
 
     return (
         <div style={{ paddingBottom: '80px' }}>
@@ -64,19 +75,21 @@ const DriverDashboard = () => {
                     </div>
                 </div>
 
-                <button className="btn btn-primary" style={{ marginBottom: '12px' }}>
+                <button className="btn btn-primary" style={{ marginBottom: '12px' }} onClick={handleStartTrip}>
                     Start Trip
                 </button>
-                <button className="btn btn-outline">
+                <button className="btn btn-outline" onClick={() => navigate('/subscriptions')}>
                     View Passenger List
                 </button>
             </div>
 
             {/* Incident Report */}
-            <button className="btn" style={{ backgroundColor: '#fee2e2', color: '#991b1b', marginTop: '12px' }}>
+            <button className="btn" style={{ backgroundColor: '#fee2e2', color: '#991b1b', marginTop: '12px' }} onClick={() => navigate('/reports/daily')}>
                 <AlertTriangle size={20} />
                 Report Incident
             </button>
+
+            {showToast && <Toast message="Trip started successfully!" type="success" onClose={() => setShowToast(false)} />}
         </div>
     );
 };

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Phone, Bus, MoreVertical } from 'lucide-react';
 import { drivers, vehicles } from '../../data/mockData';
+import Toast from '../../components/Toast';
 
 const DriverList = () => {
     const navigate = useNavigate();
+    const [showToast, setShowToast] = useState(false);
 
     return (
         <div style={{ paddingBottom: '80px' }}>
@@ -51,7 +53,7 @@ const DriverList = () => {
                                         <Bus size={14} /> {assignedVehicle.plate}
                                     </div>
                                 ) : (
-                                    <button className="btn btn-outline" style={{ width: 'auto', padding: '6px 16px', fontSize: '0.85rem' }} onClick={(e) => { e.stopPropagation(); }}>
+                                    <button className="btn btn-outline" style={{ width: 'auto', padding: '6px 16px', fontSize: '0.85rem' }} onClick={(e) => { e.stopPropagation(); setShowToast(true); }}>
                                         Assign Vehicle
                                     </button>
                                 )}
@@ -60,6 +62,8 @@ const DriverList = () => {
                     );
                 })}
             </div>
+
+            {showToast && <Toast message="Driver assignment updated!" type="success" onClose={() => setShowToast(false)} />}
         </div>
     );
 };

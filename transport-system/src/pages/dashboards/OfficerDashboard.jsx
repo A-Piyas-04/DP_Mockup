@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Users, Bus, Calendar, DollarSign, Plus, UserPlus, List } from 'lucide-react';
 import { trips, vehicles } from '../../data/mockData';
 
 const OfficerDashboard = () => {
+    const navigate = useNavigate();
+
     return (
         <div style={{ paddingBottom: '80px' }}>
             <header className="page-header">
@@ -12,25 +15,25 @@ const OfficerDashboard = () => {
 
             {/* KPI Cards */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
-                <KpiCard icon={<Bus size={20} />} label="Total Vehicles" value={vehicles.length} color="blue" />
-                <KpiCard icon={<Calendar size={20} />} label="Today's Trips" value={trips.length} color="green" />
-                <KpiCard icon={<Users size={20} />} label="Avail. Seats" value="45" color="purple" />
-                <KpiCard icon={<DollarSign size={20} />} label="Pending Pay" value="12" color="orange" />
+                <KpiCard icon={<Bus size={20} />} label="Total Vehicles" value={vehicles.length} color="blue" onClick={() => navigate('/vehicles')} />
+                <KpiCard icon={<Calendar size={20} />} label="Today's Trips" value={trips.length} color="green" onClick={() => navigate('/routes')} />
+                <KpiCard icon={<Users size={20} />} label="Avail. Seats" value="45" color="purple" onClick={() => navigate('/booking')} />
+                <KpiCard icon={<DollarSign size={20} />} label="Pending Pay" value="12" color="orange" onClick={() => navigate('/payment')} />
             </div>
 
             {/* Quick Actions */}
             <h3 style={{ marginBottom: '12px', fontSize: '1.1rem' }}>Quick Actions</h3>
             <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '8px', marginBottom: '24px' }}>
-                <QuickAction icon={<Plus size={20} />} label="Add Vehicle" />
-                <QuickAction icon={<UserPlus size={20} />} label="Assign Driver" />
-                <QuickAction icon={<List size={20} />} label="View Trips" />
+                <QuickAction icon={<Plus size={20} />} label="Add Vehicle" onClick={() => navigate('/vehicles')} />
+                <QuickAction icon={<UserPlus size={20} />} label="Assign Driver" onClick={() => navigate('/drivers')} />
+                <QuickAction icon={<List size={20} />} label="View Trips" onClick={() => navigate('/routes')} />
             </div>
 
             {/* Active Trips */}
             <h3 style={{ marginBottom: '12px', fontSize: '1.1rem' }}>Active Trips Today</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {trips.map(trip => (
-                    <div key={trip.id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div key={trip.id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate(`/routes/${trip.routeId}`)}>
                         <div>
                             <div style={{ fontWeight: '600', marginBottom: '4px' }}>Route {trip.routeId}</div>
                             <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
@@ -50,7 +53,7 @@ const OfficerDashboard = () => {
     );
 };
 
-const KpiCard = ({ icon, label, value, color }) => {
+const KpiCard = ({ icon, label, value, color, onClick }) => {
     const colors = {
         blue: { bg: '#dbeafe', text: '#1e40af' },
         green: { bg: '#dcfce7', text: '#166534' },
@@ -60,7 +63,7 @@ const KpiCard = ({ icon, label, value, color }) => {
     const theme = colors[color] || colors.blue;
 
     return (
-        <div className="card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div className="card" onClick={onClick} style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px', cursor: onClick ? 'pointer' : 'default' }}>
             <div style={{
                 width: '32px', height: '32px', borderRadius: '8px',
                 backgroundColor: theme.bg, color: theme.text,
@@ -76,8 +79,8 @@ const KpiCard = ({ icon, label, value, color }) => {
     );
 };
 
-const QuickAction = ({ icon, label }) => (
-    <button className="card" style={{
+const QuickAction = ({ icon, label, onClick }) => (
+    <button className="card" onClick={onClick} style={{
         minWidth: '100px',
         display: 'flex',
         flexDirection: 'column',

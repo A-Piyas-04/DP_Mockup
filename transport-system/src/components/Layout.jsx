@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Home, User, Settings, Bell, LogOut } from 'lucide-react';
+import { Home, User, Settings, Bell } from 'lucide-react';
 
 const Layout = () => {
     const navigate = useNavigate();
@@ -17,7 +17,9 @@ const Layout = () => {
                 <div style={{ fontWeight: 'bold', color: 'var(--primary-color)', fontSize: '1.2rem' }}>
                     IUT Transport
                 </div>
-                <Bell size={24} color="var(--text-secondary)" />
+                <div onClick={() => navigate('/notifications')} style={{ cursor: 'pointer' }}>
+                    <Bell size={24} color="var(--text-secondary)" />
+                </div>
             </header>
 
             <main style={{ minHeight: 'calc(100vh - 140px)' }}>
@@ -39,7 +41,7 @@ const Layout = () => {
                 margin: '0 auto',
                 zIndex: 100
             }}>
-                <NavIcon icon={<Home size={24} />} label="Home" active={location.pathname === '/'} onClick={() => navigate('/')} />
+                <NavIcon icon={<Home size={24} />} label="Home" active={location.pathname === '/dashboard'} onClick={() => navigate('/dashboard')} />
                 <NavIcon icon={<User size={24} />} label="Profile" active={location.pathname === '/profile'} onClick={() => navigate('/profile')} />
                 <NavIcon icon={<Settings size={24} />} label="Settings" active={location.pathname === '/settings'} onClick={() => navigate('/settings')} />
             </nav>

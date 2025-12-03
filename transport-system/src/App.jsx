@@ -10,6 +10,17 @@ import DriverList from './pages/drivers/DriverList';
 import DriverProfile from './pages/drivers/DriverProfile';
 import RouteList from './pages/routes/RouteList';
 import RouteDetails from './pages/routes/RouteDetails';
+import SeatAvailability from './pages/booking/SeatAvailability';
+import SubscriptionSeatManagement from './pages/booking/SubscriptionSeatManagement';
+import TokenBooking from './pages/payment/TokenBooking';
+import PaymentPage from './pages/payment/PaymentPage';
+import PaymentHistory from './pages/payment/PaymentHistory';
+import SubscriptionList from './pages/subscriptions/SubscriptionList';
+import SubscriberProfile from './pages/subscriptions/SubscriberProfile';
+import DailyReport from './pages/reports/DailyReport';
+import MonthlyReport from './pages/reports/MonthlyReport';
+import NotificationCenter from './pages/NotificationCenter';
+import ProfileSettings from './pages/ProfileSettings';
 
 function App() {
   return (
@@ -25,8 +36,18 @@ function App() {
           <Route path="drivers/:id" element={<DriverProfile />} />
           <Route path="routes" element={<RouteList />} />
           <Route path="routes/:id" element={<RouteDetails />} />
-          <Route path="profile" element={<div>Profile Page</div>} />
-          <Route path="settings" element={<div>Settings Page</div>} />
+          <Route path="booking" element={<SeatAvailability />} />
+          <Route path="booking/token" element={<TokenBooking />} />
+          <Route path="payment" element={<PaymentPage />} />
+          <Route path="history" element={<PaymentHistory />} />
+          <Route path="manage-seats" element={<SubscriptionSeatManagement />} />
+          <Route path="subscriptions" element={<SubscriptionList />} />
+          <Route path="subscriptions/:id" element={<SubscriberProfile />} />
+          <Route path="reports/daily" element={<DailyReport />} />
+          <Route path="reports/monthly" element={<MonthlyReport />} />
+          <Route path="notifications" element={<NotificationCenter />} />
+          <Route path="profile" element={<ProfileSettings />} />
+          <Route path="settings" element={<ProfileSettings />} />
         </Route>
       </Routes>
     </BrowserRouter>

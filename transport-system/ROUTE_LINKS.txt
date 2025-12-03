@@ -1,0 +1,192 @@
+===============================================
+IUT TRANSPORT SYSTEM - ALL PAGE ROUTES & LINKS
+===============================================
+
+Development Server: http://localhost:5173
+(Note: Port may vary - check your terminal for the actual port)
+
+===============================================
+AUTHENTICATION
+===============================================
+Login Page
+  Route: /login
+  URL: http://localhost:5173/login
+
+===============================================
+MAIN DASHBOARD
+===============================================
+Dashboard (Home)
+  Route: /dashboard
+  URL: http://localhost:5173/dashboard
+
+===============================================
+VEHICLE MANAGEMENT
+===============================================
+Vehicle List
+  Route: /vehicles
+  URL: http://localhost:5173/vehicles
+
+Vehicle Details (Dynamic - replace :id with vehicle ID)
+  Route: /vehicles/:id
+  URL Examples:
+    - http://localhost:5173/vehicles/1
+    - http://localhost:5173/vehicles/2
+    - http://localhost:5173/vehicles/3
+
+===============================================
+DRIVER MANAGEMENT
+===============================================
+Driver List
+  Route: /drivers
+  URL: http://localhost:5173/drivers
+
+Driver Profile (Dynamic - replace :id with driver ID)
+  Route: /drivers/:id
+  URL Examples:
+    - http://localhost:5173/drivers/1
+    - http://localhost:5173/drivers/2
+    - http://localhost:5173/drivers/3
+
+===============================================
+ROUTE MANAGEMENT
+===============================================
+Route List
+  Route: /routes
+  URL: http://localhost:5173/routes
+
+Route Details (Dynamic - replace :id with route ID)
+  Route: /routes/:id
+  URL Examples:
+    - http://localhost:5173/routes/1
+    - http://localhost:5173/routes/2
+    - http://localhost:5173/routes/3
+
+===============================================
+BOOKING SYSTEM
+===============================================
+Seat Availability
+  Route: /booking
+  URL: http://localhost:5173/booking
+
+Token Booking
+  Route: /booking/token
+  URL: http://localhost:5173/booking/token
+
+Subscription Seat Management
+  Route: /manage-seats
+  URL: http://localhost:5173/manage-seats
+
+===============================================
+PAYMENT SYSTEM
+===============================================
+Payment Page
+  Route: /payment
+  URL: http://localhost:5173/payment
+
+Payment History
+  Route: /history
+  URL: http://localhost:5173/history
+
+===============================================
+SUBSCRIPTION MANAGEMENT
+===============================================
+Subscription List
+  Route: /subscriptions
+  URL: http://localhost:5173/subscriptions
+
+Subscriber Profile (Dynamic - replace :id with subscriber ID)
+  Route: /subscriptions/:id
+  URL Examples:
+    - http://localhost:5173/subscriptions/1
+    - http://localhost:5173/subscriptions/2
+    - http://localhost:5173/subscriptions/3
+
+===============================================
+REPORTS
+===============================================
+Daily Report
+  Route: /reports/daily
+  URL: http://localhost:5173/reports/daily
+
+Monthly Report
+  Route: /reports/monthly
+  URL: http://localhost:5173/reports/monthly
+
+===============================================
+USER SETTINGS
+===============================================
+Notification Center
+  Route: /notifications
+  URL: http://localhost:5173/notifications
+
+Profile Settings
+  Route: /profile
+  URL: http://localhost:5173/profile
+
+Settings (Alternative route to Profile)
+  Route: /settings
+  URL: http://localhost:5173/settings
+
+===============================================
+QUICK REFERENCE - ALL STATIC ROUTES
+===============================================
+/login
+/dashboard
+/vehicles
+/drivers
+/routes
+/booking
+/booking/token
+/payment
+/history
+/manage-seats
+/subscriptions
+/reports/daily
+/reports/monthly
+/notifications
+/profile
+/settings
+
+===============================================
+DYNAMIC ROUTES (Require ID Parameter)
+===============================================
+/vehicles/:id
+/drivers/:id
+/routes/:id
+/subscriptions/:id
+
+===============================================
+NOTES
+===============================================
+1. The root path "/" automatically redirects to "/dashboard"
+2. All routes except "/login" are wrapped in the Layout component (includes navigation)
+3. Dynamic routes require an ID parameter (e.g., /vehicles/1, /drivers/2)
+4. The dev server is currently running on port 5173 (default Vite port)
+5. If the port is different, check your terminal output for the actual URL
+
+===============================================
+TESTING CHECKLIST
+===============================================
+☐ Login Page
+☐ Dashboard
+☐ Vehicle List
+☐ Vehicle Details (test with multiple IDs)
+☐ Driver List
+☐ Driver Profile (test with multiple IDs)
+☐ Route List
+☐ Route Details (test with multiple IDs)
+☐ Seat Availability
+☐ Token Booking
+☐ Subscription Seat Management
+☐ Payment Page
+☐ Payment History
+☐ Subscription List
+☐ Subscriber Profile (test with multiple IDs)
+☐ Daily Report
+☐ Monthly Report
+☐ Notification Center
+☐ Profile Settings
+
+===============================================
+END OF ROUTE DOCUMENTATION
+===============================================

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Filter, Plus, Bus, MoreVertical } from 'lucide-react';
 import { vehicles } from '../../data/mockData';
-import Toast from '../components/Toast';
+import Toast from '../../components/Toast';
 
 const VehicleList = () => {
     const navigate = useNavigate();
